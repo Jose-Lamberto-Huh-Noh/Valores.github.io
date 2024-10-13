@@ -1,0 +1,313 @@
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Fondo neutro */
+    color: #333; 
+    overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+/* Animaciones para el contenido */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Efecto al hacer scroll para las imágenes */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Estilos para animaciones en la página */
+.animate {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Header */
+header {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 40px 0;
+    position: relative;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 2px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 5px;
+    background-color: #1abc9c;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Navegación */
+/* Navegación lateral */
+nav {
+    position: fixed; /* Fijo en la pantalla, para que siempre esté visible */
+    top: 0;
+    left: 0;
+    height: 100%; /* Ocupa todo el alto de la pantalla */
+    width: 250px; /* Ancho del menú */
+    background-color: #34495e; /* Fondo oscuro que contrasta con el contenido */
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    transition: transform 0.3s ease; /* Animación para abrir y cerrar el menú */
+    transform: translateX(0); /* Posición inicial (visible) */
+    z-index: 100; /* Asegura que esté por encima del contenido */
+}
+
+/* Links del menú */
+nav a {
+    color: #ecf0f1; /* Color claro en el texto */
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Líneas divisorias sutiles */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #1abc9c; /* Color de fondo en hover */
+    color: #fff; /* Texto blanco para resaltar sobre el fondo verde */
+}
+
+/* Estilo activo para el enlace seleccionado */
+nav a.active {
+    background-color: #2980b9; /* Diferente color para el enlace activo */
+    font-weight: bold;
+}
+
+/* Animación para iconos del menú */
+nav a::before {
+    content: '►'; /* Agrega un icono antes del texto */
+    margin-right: 10px;
+    color: #1abc9c;
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::before {
+    transform: rotate(90deg); /* Gira el icono cuando el usuario pasa el ratón */
+}
+
+/* Para secciones con subtemas */
+nav a + ul {
+    list-style: none;
+    padding: 0;
+    display: none; /* Oculta subtemas hasta que el usuario haga clic */
+}
+
+nav a.active + ul {
+    display: block; /* Muestra subtemas del enlace activo */
+    padding-left: 20px;
+}
+
+nav ul li a {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+/* Estilo del botón para abrir/cerrar el menú en pantallas pequeñas */
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    left: 230px;
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 101;
+    transition: left 0.3s ease;
+}
+
+.menu-toggle.active {
+    left: 10px; /* Botón se mueve hacia la derecha al abrir/cerrar el menú */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    nav {
+        width: 200px;
+        transform: translateX(-200px); /* Esconde el menú inicialmente en pantallas pequeñas */
+    }
+
+    nav.active {
+        transform: translateX(0); /* Muestra el menú cuando está activo */
+    }
+
+    .menu-toggle {
+        left: 10px;
+    }
+
+    .menu-toggle.active {
+        left: 210px; /* Ajusta la posición del botón al abrir el menú */
+    }
+}
+
+
+/* Secciones */
+section {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    max-width: 800px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+h2 {
+    color: #2980b9;
+    font-size: 2.2rem;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+h2::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    background-color: #8e44ad;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Estilos gráficos y animaciones en las imágenes */
+.imagen-biografia {
+    max-width: 30%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 2s ease-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+.imagen-biografia:hover {
+    transform: scale(1.05);
+}
+
+.imagen-Max {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 2s ease-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+.imagen-ortega {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 2s ease-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Texto de los párrafos */
+p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    animation: fadeIn 1.2s ease-in;
+}
+
+/* Enlaces dentro del contenido */
+section a {
+    color: #3498db;
+    text-decoration: none;
+    position: relative;
+}
+
+section a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #3498db;
+    bottom: -3px;
+    left: 0;
+    transition: width 0.3s;
+}
+
+section a:hover::after {
+    width: 100%;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    animation: slideIn 1.5s ease-out;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+    }
+}
